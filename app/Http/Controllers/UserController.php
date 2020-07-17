@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Profil;
 use App\Pharmacie;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         $pharmacies = Pharmacie::all();
         $profils    = Profil::all();
-        return view('users/addUser', ['pharmacies' => $pharmacies, 'profils' => $profils ]);
+        return view('auth/register', ['pharmacies' => $pharmacies, 'profils' => $profils ]);
     }
 
     /**
@@ -45,7 +46,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $params['name'];
         $user->email = $params['email'];
-        $user->password = $params['password'];
+        $user->password = Hash::make($params['password']);
         if($params['profil'] == 1){
 
             $user->pharmacie_id = null;
@@ -56,7 +57,7 @@ class UserController extends Controller
             $user->pharmacie_id = $params['pharmacie'];
             $user->profil_id = $params['profil'];
         }
-        dd($user);
+        //dd($user);
         $user->save();
 
         return redirect('/users');

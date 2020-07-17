@@ -27,8 +27,7 @@ class CommuneController extends Controller
     public function createCommune()
     {
         $regions = Region::all();
-        $communes = Commune::all();
-        return view('communes/addCommune' , ['regions' => $regions , 'communes' => $communes]);
+        return view('communes/addCommune' , ['regions' => $regions]);
     }
 
     /**
@@ -56,9 +55,10 @@ class CommuneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showCommune($id)
+    public function showCommune()
     {
-        //
+        $communes = Commune::latest()->with('regions')->get();
+        return view('communes.showCommune', ['communes' => $communes]);
     }
 
     /**

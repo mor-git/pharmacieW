@@ -13,7 +13,11 @@ class User extends Authenticatable
 
     public function pharmacies()
     {
-        return $this->belongsTo('App\Pharmacie');
+        return $this->belongsTo('App\Pharmacie','pharmacie_id');
+    }
+    public function profils()
+    {
+        return $this->belongsTo('App\Profil','profil_id');
     }
 
     /**

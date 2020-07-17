@@ -15,8 +15,9 @@ class PharmacieController extends Controller
      */
     public function index()
     {
-        $pharmacies = Pharmacie::all()->orderBy('id', 'desc');
-        return view('pharmacies.showPharmacie', ['pharmacies' => $pharmacies ]);
+        $pharmacies = Pharmacie::latest()->get();
+        return view('index', ['pharmacies' => $pharmacies ]);
+        // return view('index2');
     }
 
     public function changeStatus($id){
@@ -35,7 +36,7 @@ class PharmacieController extends Controller
 
         }
         
-        return redirect('/addPharmacie');
+        return redirect('/accueil');
     }
 
     /**
@@ -71,7 +72,7 @@ class PharmacieController extends Controller
         $pharmacie->longitude   = $params['lng'];
         $pharmacie->commune_id  = $params['commune'];
         $pharmacie->status      = 0;
-        //dd($pharmacie);
+        // dd($pharmacie);
         $pharmacie->save();
 
         return redirect('/addPharmacie');
@@ -79,14 +80,15 @@ class PharmacieController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource. 
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showPharmacie($id)
+    public function showPharmacie()
     {
-        //
+        $pharmacies = Pharmacie::latest()->with('communes')->get();
+        return view('pharmacies.showPharmacie', ['pharmacies' => $pharmacies ]);
     }
 
     /**

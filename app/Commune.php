@@ -8,8 +8,8 @@ class Commune extends Model
 {
     public function regions()
     {
-       // return $this->belongsTo('App\Region','region_id');
-        return $this->belongsTo(Region::class);
+        return $this->belongsTo('App\Region','region_id');
+        // return $this->belongsTo(Region::class);
     }
 
     public function pharmacies()

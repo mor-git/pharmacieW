@@ -53,9 +53,10 @@ class ProfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showProfil($id)
+    public function showProfil()
     {
-        //
+        $profils = Profil::all();
+        return view('profils/showProfil', ['profils' => $profils]);
     }
 
     /**

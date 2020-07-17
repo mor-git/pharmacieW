@@ -1,45 +1,118 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<div>
-    <a href="{{ url('/') }}"><button>Accueil</button></a>
-</div><br><br>
-<div>
-    <a href="{{ url('/changeStatus', 1) }}"><button>Changer Status</button></a>
-</div>
-@if($status == 1)
-    <div style="background-color: green; width : 109px; text-align : center;">{{ $status }}</div>
-@else
-    <div style="background-color: red; width : 109px; text-align : center;">{{ $status }}</div>
-@endif
-<div>
-    <form method="post" action="{{ url('/storePharmacie')}}">
-        <input type="hidden" value="{{csrf_token()}}" name="_token" id="token" />
-        <label>Ajouter un Pharmacie</label><br><br>
-        <input type="text" placeholder="Name" name="name"><br><br>
-        <input type="text" placeholder="Phone" name="phone"><br><br>
-        <input type="text" placeholder="Adresse" name="address"><br><br>
-        <label for="story">Description:</label><br>
-        <textarea id="story" rows="5" cols="33" name="description"></textarea><br><br>
-        <select name="commune">
-            <option>Choix Commune</option>
-        @foreach($communes as $commune)
-            <option value="{{ $commune->id }}">{{ $commune->name }}</option>
-        @endforeach
-        </select><br><br>
-        <input type="text" placeholder="Adresse" name="adresse" id="adresse"><br><br>
-        <input id="lat" type="text" placeholder="Latitude" name="lat" readonly><br><br>
-        <input id="lng" type="text" placeholder="Longitude" name="lng" readonly><br><br>
-        <button >Valider</button>
-    </form>
-</div>
-<div>
-    @foreach($pharmacies as $pharmacie)
-    <p>{{ $pharmacie->name }}&nbsp;&nbsp;{{ $pharmacie->communes->name }}&nbsp;&nbsp;&nbsp;{{ $pharmacie->adresse }}&nbsp;&nbsp;{{ $pharmacie->phone }}&nbsp;&nbsp;<a href="{{ url('/editPharmacie', $pharmacie->id)}}">Modifier</a><p>
-    @endforeach
-</div>
+@extends('layouts.layout')
+
+@section('contenu') 
+
+    <!-- ============================================================== -->
+    <!-- wrapper  -->
+    <!-- ============================================================== -->
+    <div class="dashboard-wrapper">
+        <div class="container-fluid  dashboard-content">
+            <!-- ============================================================== -->
+            <!-- pageheader -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">Pharmacie </h2>
+                        <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Forms</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Pharmacie</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end pageheader -->
+            <!-- ============================================================== -->        
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- valifation types -->
+            <!-- ============================================================== -->
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card">
+                    <h5 class="card-header">Enrégistrement Pharmacie</h5>
+                    <div class="card-body">
+                        <form method="post" action="{{ url('/storePharmacie') }}" id="validationform" data-parsley-validate="" novalidate="">
+                            <input type="hidden" value="{{csrf_token()}}" name="_token" id="token" />
+                            
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right">Nom Pharmacie</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input required="" name="name" type="text" min="6" max="100" placeholder="Nom du Pharmacie." class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right">Phone</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input type="text" name="phone" required="" data-parsley-minlength="6" placeholder="Téléphone." class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right">Adresse</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input type="text" name="address" required="" data-parsley-maxlength="6" placeholder="Adresse du Pharmacie." class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right">Description</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input type="text" name="description" required="" data-parsley-length="[5,10]" placeholder="Lieu exact du Pharmacie." class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="input-select">Région</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <select name="region" id="region" class="form-control col-12 col-sm-8 col-lg-6" id="input-select">
+                                    <option>Région</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="input-select">Commune</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <select name="commune" id="commune" class="form-control col-12 col-sm-8 col-lg-6" id="input-select">
+                                    <option>Commune</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right">Adresse Complète</label>
+                                <div class="col-12 col-sm-8 col-lg-6">
+                                    <input  type="text" name="adresse" id="adresse" required="" placeholder="Adresse Complète." class="form-control">
+                                </div>
+                            </div>
+                            <input id="lat" type="hidden" placeholder="Latitude" name="lat" readonly>
+                            <input id="lng" type="hidden" placeholder="Longitude" name="lng" readonly>
+                            <div class="form-group row text-right">
+                                <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                    <button type="submit" class="btn btn-space btn-success">Valider</button>
+                                    <button class="btn btn-space btn-secondary">Annuler</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end valifation types -->
+            <!-- ============================================================== -->
+        </div>
+        
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper --> 
+    <!-- ============================================================== -->
 <!-- ----Modal -------------------------------->
-<div id="overlay" >
-    <div class="modal-dialog">
-        <div class="modal-content">
+<div id="overlay">
+    <div class="modal-dialog" >
+        <div class="modal-content" style="width:180%;height: 700px;">
             <div class="modal-header">
                 <h5 class="modal-title"> Adresse</h5>
                 <button type="button" class="close" id="fermodal">
@@ -54,7 +127,10 @@
     </div>
   </div>
 <!-------Fin Modal --------------------------->
+@endsection  
+@section('script') 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
 <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJby-hPhgoq4hIhiwKiHYvYmEUn74qnBw&callback=initMap" async defer></script>
 <!-- <script src="/template/lib/gmaps/gmaps.min.js"></script> -->
 
@@ -62,27 +138,28 @@
   $(document).ready(function(){
     
       $.ajax({
-              url : "http://localhost:8000/listRegion",
+              url : "http://localhost:8000/api/apiRegions",
               dateType : "json",
               success:function(data){
                 //console.log(data);
                 $.each(JSON.parse(data), function(cle, valeur){
-                  $("#region").append("<option value='"+ valeur.id +"'>"+ valeur.nomRegion +"</option>");
+                  $("#region").append("<option value='"+ valeur.id +"'>"+ valeur.name +"</option>");
+                  console.log(valeur.id);
                 });
               }
           })
         $("#region").change(function(){
-        $("#ville").empty();
-        $("#ville").append("<option value=''></option>");
+        $("#commune").empty();
+        $("#commune").append("<option value=''></option>");
         var lis = $("#region").val();
-    
+     
         $.ajax({
-            url : "http://localhost:8000/listVille/"+lis,
+            url : "http://localhost:8000/api/communesApi/"+lis,
             dateType : "json",
             success:function(data){
               //console.log(data);
               $.each(JSON.parse(data), function(cle, valeur){
-                $("#ville").append("<option value='"+valeur.id+"'>"+valeur.nomVille+"</option>");
+                $("#commune").append("<option value='"+valeur.id+"'>"+valeur.name+"</option>");
               });
             }
         })
@@ -169,3 +246,4 @@ $(document).ready(function() {
   });
  });
  </script>
+@endsection

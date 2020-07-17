@@ -52,10 +52,10 @@ class RegionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showRegion($id)
+    public function showRegion()
     {
-        $region = Region::find($id);
-        return view('regions.showRegion', ['regions' => $region]);
+        $regions = Region::latest()->get();
+        return view('regions.showRegion', ['regions' => $regions]);
     }
 
     /**

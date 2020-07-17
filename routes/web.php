@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 /**----------------------------Route Region --------------------------- */
+// Route::get('/regions',[
+//     'as'   => 'regions',
+//     'uses' => 'RegionController@indexRegion'
+// ]);
 Route::get('/regions',[
     'as'   => 'regions',
-    'uses' => 'RegionController@indexRegion'
+    'uses' => 'RegionController@showRegion'
 ]);
 Route::get('/addRegion',[
     'as'   => 'addRegion',
@@ -39,9 +43,13 @@ Route::put('/updateRegion',[
 ]);
 /**---------------------------- Fin Route Region --------------------------- */
 /**----------------------------Route Commune --------------------------- */
+// Route::get('/communes',[
+//     'as'   => 'communes',
+//     'uses' => 'CommuneController@index'
+// ]);
 Route::get('/communes',[
     'as'   => 'communes',
-    'uses' => 'CommuneController@index'
+    'uses' => 'CommuneController@showCommune'
 ]);
 Route::get('/addCommune',[
     'as'   => 'addCommune',
@@ -65,9 +73,13 @@ Route::get('/destroyCommune/{id}',[
 ]);
 /**---------------------------- Fin Route Commune --------------------------- */
 /**----------------------------Route Pharmacie --------------------------- */
+Route::get('/accueil',[
+    'as'   => 'accueil',
+    'uses' => 'PharmacieController@index'
+]);
 Route::get('/pharmacies',[
     'as'   => 'pharmacies',
-    'uses' => 'PharmacieController@index'
+    'uses' => 'PharmacieController@showPharmacie'
 ]);
 Route::get('/changeStatus/{id}',[
     'as'   => 'changeStatus',
@@ -91,9 +103,13 @@ Route::post('/updatePharmacie/{id}',[
 ]);
 /**---------------------------- Fin Route Pharmacie --------------------------- */
 /**----------------------------Route Profil --------------------------- */
+// Route::get('/profils',[
+//     'as'   => 'profils',
+//     'uses' => 'ProfilController@indexProfil'
+// ]);
 Route::get('/profils',[
     'as'   => 'profils',
-    'uses' => 'ProfilController@indexProfil'
+    'uses' => 'ProfilController@showProfil'
 ]);
 Route::get('/addProfil',[
     'as'   => 'addProfil',
@@ -134,3 +150,6 @@ Route::put('/updateUser',[
     'uses' => 'UserController@updateUser'
 ]);
 /**---------------------------- Fin Route Users --------------------------- */
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
