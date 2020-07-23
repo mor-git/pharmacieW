@@ -138,50 +138,49 @@
                         <div class="card influencer-profile-data">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
-                                        <div class="text-center">
+                                    <!-- <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12"> -->
+                                        <div class="text-center" class="col-md-4">
                                             <a href="{{ url('/changeStatus', Auth::user()->pharmacie_id) }}">
                                                 <img src="assets/images/ph1.png" alt="User Avatar" style="height: 50px; weight: 50px;margin-top: 10px;" class="rounded-circle user-avatar-xl">
                                             </a>
                                         </div>
-                                        </div>
-                                        <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12">
+                                        <div style="margin-left: 25%;" class="col-md-4 text-center">
+                                        <!-- <div class="col-xl-10 col-lg-8 col-md-8 col-sm-8 col-12"> -->
                                             <div class="user-avatar-info">
                                                 <div class="m-b-20">
-                                                    <div class="user-avatar-name" style="margin-left : 19%;">
+                                                    <input id="pharmaci_id" type="hidden" value="{{ Auth::user()->pharmacie_id }}"/>
+                                                    <input id="stat" type="hidden" value="{{ Auth::user()->pharmacies->status }}"/>
+                                                    <!-- <div class="user-avatar-name" style="margin-left : 19%;"> -->
                                                     <h2>Pharmacie :&nbsp;&nbsp;{{ Auth::user()->pharmacies->name }}</h2>
-                                                    <p style="margin-left : 19%;"><span class="fa fa-map-marker"> </span>&nbsp;&nbsp;{{ Auth::user()->pharmacies->adresse }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <p style="margin-left : 12%;"><span class="fa fa-map-marker"> </span>&nbsp;&nbsp;{{ Auth::user()->pharmacies->adresse }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                         <span class="fa fa-phone"> </span>&nbsp;&nbsp;{{ Auth::user()->pharmacies->phone }}
                                                     </p>
-                                                    </div>
-                                                    @if(Auth::user()->pharmacies->status === 1)
-                                                    <div style="margin-left : 79%; margin-top: 40px;border-radius : 2px;">
-                                                        <a href="{{ url('/changeStatus', Auth::user()->pharmacie_id) }}">
-                                                            <button style="border-radius: 5px;color: white;" class="btn btn-danger">Changer de Statut.</button>
-                                                        </a>
-                                                    </div>
-                                                    @else
-                                                    <div style="margin-left : 79%; margin-top: 40px;border-radius : 2px;">
-                                                        <a href="{{ url('/changeStatus', Auth::user()->pharmacie_id) }}">
-                                                            <button style="border-radius: 5px;color: white;" class="btn btn-success">Changer de Statut.</button>
-                                                        </a>
-                                                    </div>
-                                                    @endif
+                                                    <!-- </div> -->
                                                 </div>
                                                 
                                             </div>
                                         </div>
+                                        <div class="col-md-4;" style="margin-left : 19%;">
+                                            <!-- <div style="margin-top: 40px;">
+                                                <button id="btn" style="color: white;" class="btn btn">Changer de Statut.</button>
+                                            </div> -->
+                                            @if(Auth::user()->pharmacies->status === 1)
+                                            <div style="margin-top: 40px;">
+                                                <button id="btn" style="border-radius: 5px;color: white;" class="btn btn-danger">Changer de Statut.</button>
+                                            </div>
+                                            @else
+                                            <div style="margin-top: 40px;">
+                                                <button id="btn" style="border-radius: 5px;color: white;" class="btn btn-success">Changer de Statut.</button>
+                                            </div>
+                                            @endif
+                                        </div>
                                         
-                                    </div>
-                                </div>
+                                    <!-- </div> -->
+                                </div><br>
+                                <div id="status">
                                 @if(Auth::user()->pharmacies->status === 1)
-                                <div class="border-top user-social-box" style="background-color : green;">
-                                    <!-- <div class="user-social-media d-xl-inline-block"><span class="mr-2 twitter-color"></span><span></span></div>
-                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2  pinterest-color"> </span><span></span></div>
-                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2 instagram-color"> </span><span></span></div>
-                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2  facebook-color"> </span><span></span></div> 
-                                    <div class="user-social-media d-xl-inline-block"><span class="mr-2 youtube-color"> </span><span></span></div>-->
-                                    <div class="user-social-media d-xl-inline-block" style="margin-left : 38%;">
+                                <div class="border-top user-social-box" style="background-color: green;">
+                                    <div class="user-social-media d-xl-inline-block" style="padding-left : 45%;">
                                         <span>
                                             <h3 class="mb-1" style="color: white;">Garde Activée</h3>
                                         </span>
@@ -196,6 +195,7 @@
                                     </div>
                                 </div>
                                 @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -214,4 +214,56 @@
 @endif
 @endauth
 @endsection
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#btn").click(function(){
+    var id =$('#pharmaci_id').val();
+    // console.log(id);
+
+    $.ajax({
+        type : 'GET',
+        url : "{{route('changeStatus')}}",
+        data : {'id': id},
+        success : function(data){
+            // console.log(data['stat']);
+                if(data['stat'] == 1){
+                    $('#btn').css('background-color','#EF172C');
+                }else{
+                    $('#btn').css('background-color','green');
+                    // $('#btn').css('background-color','#2EC551')
+                }
+            $('#status').html(data['html']);
+        },
+        error : function(resultat, statut, erreur){
+            console.log("Nooooooooononnnnnnnnnnnnnn");
+        }
+    });
     
+});
+});
+</script>
+<script>
+// $(document).ready(function(){
+//     console.log("Mor");
+    
+//     // $("#region").change(function(){
+//     //   $("#ville").empty();
+//     //   $("#ville").append("<option value=''>Choix</option>");
+//     //   var lis = $("#region").val();
+  
+//       $.ajax({
+//           url : "http://localhost:8000/changeStatus/"+ 1,
+//           dateType : "json",
+//           success:function(data){
+//             $.each(function(cle, valeur){
+//                 console.log(data);
+//                 //   $("#ville").append("<option value='"+valeur.idV+"'>"+valeur.nomV+"</option>");
+//             });
+//           }
+//       });
+// });
+</script>
+@endsection

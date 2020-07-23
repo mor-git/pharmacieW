@@ -1256,7 +1256,7 @@ Top Header
     border: none;
 }
 
-.navbar-right-top .nav-item .nav-link {
+.navbar-right-top .nav-item .nav-link { 
     padding: 13px 20px;
     font-size: 16px;
     line-height: 2;
@@ -1643,7 +1643,9 @@ Left Navigation Sidebar
     height: 100%;
     top: 60px;
     overflow: auto;
-    background-color: #fff;
+    background-color: #A9A9A9;
+    color: white;
+    /* background-color: #fff; */
     -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     -webkit-transition: all 0.3s ease;
@@ -1693,7 +1695,8 @@ Left Navigation Sidebar
     font-size: 14px;
     padding: 12px;
     /* margin-bottom: 2px; */
-    color: #71789e;
+    /* color: #71789e; */
+    color: #fff;
     transition: 0.3s;
 }
 

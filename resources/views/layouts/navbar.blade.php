@@ -46,7 +46,7 @@
         <!-- left sidebar -->
         <!-- ============================================================== -->
         <!-- <div class="nav-left-sidebar sidebar-dark" style="background-color: gray;"> -->
-        <div class="nav-left-sidebar" style="background-color: gray; color: white;">
+        <div class="nav-left-sidebar">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -84,7 +84,7 @@
                                             <a class="nav-link" href="{{ url('/profils')}}">Profils</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ url('/addUser')}}">Users</a>
+                                            <a class="nav-link" href="{{ url('/users')}}">Users</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ url('/regions')}}">Régions</a>

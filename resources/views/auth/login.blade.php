@@ -18,7 +18,7 @@
 <div class="tout">
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><img class="logo-img" src="../assets/images/ph3.jpg" alt="logo" style="height: 80px;width: 80px;"></a><span class="splash-description">Please enter your user information.</span></div>
+            <div class="card-header text-center"><img class="logo-img" src="../assets/images/ph3.jpg" alt="logo" style="height: 80px;width: 80px;"></a><span class="splash-description">Please entrez vos informations.</span></div>
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -43,14 +43,12 @@
                             <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Sign in</button>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Se Connecter</button>
                 </form>
             </div>
             <div class="card-footer bg-white p-0  ">
-                <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Create An Account</a></div>
-                <div class="card-footer-item card-footer-item-bordered">
-                    <a href="#" class="footer-link">Forgot Password</a>
+                <div class="card-footer-item card-footer-item-bordered" style="margin-left: 100px;">
+                    <a href="#" class="footer-link">Mot de Passe Oublié</a>
                 </div>
             </div>
         </div>

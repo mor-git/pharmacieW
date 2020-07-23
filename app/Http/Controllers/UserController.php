@@ -69,9 +69,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showUser($id)
+    public function showUser()
     {
-        //
+        $users = User::all();
+        return view('users.showUser', ['users' => $users]);
     }
 
     /**

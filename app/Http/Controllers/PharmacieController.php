@@ -17,12 +17,12 @@ class PharmacieController extends Controller
     {
         $pharmacies = Pharmacie::latest()->get();
         return view('index', ['pharmacies' => $pharmacies ]);
-        // return view('index2');
     }
 
-    public function changeStatus($id){
-
-        $pharmacie = Pharmacie::find($id);
+    public function changeStatus(Request $request)
+    {
+       
+        $pharmacie = Pharmacie::find($request->id);
 
         if($pharmacie->status == 0){
 
@@ -36,7 +36,30 @@ class PharmacieController extends Controller
 
         }
         
-        return redirect('/accueil');
+        $status = $pharmacie->status;
+        $html="";
+        if($status == 1){
+            $html=$html."<div class='border-top user-social-box' style='background-color: green;'>
+            <div class='user-social-media d-xl-inline-block' style='margin-left: 38%;'>
+                <span>
+                    <h3 class='mb-1' style='color: white;'>Garde Activée</h3>
+                </span>
+            </div>
+        </div>";
+       
+        }else{
+            $html=$html."<div class='border-top user-social-box' style='background-color : red;'>
+            <div class='user-social-media d-xl-inline-block' style='margin-left: 38%;'>
+                <span>
+                    <h3 class='mb-1' style='color: white;'>Garde Terminée</h3>
+                </span>
+            </div>
+        </div>";
+        }
+        
+        return ['html'=>$html,'stat'=>$status];
+         
+        // return redirect('/accueil');
     }
 
     /**

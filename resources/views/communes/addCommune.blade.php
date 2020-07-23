@@ -44,13 +44,13 @@
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Nom Commune</label>
                                 <div class="col-12 col-sm-9 col-lg-6">
-                                    <input type="text" name="produit" required="" data-parsley-maxlength="6" placeholder="Donnez le nom de la commune." class="form-control">
+                                    <input type="text" name="name" required="" data-parsley-maxlength="6" placeholder="Donnez le nom de la commune." class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right" for="input-select">Région</label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <select name="camion" class="form-control col-12 col-sm-8 col-lg-6" id="input-select">
+                                <select name="region" class="form-control col-12 col-sm-8 col-lg-6" id="input-select">
                                     <option>Région</option>
                                     @foreach($regions as $region)
                                         <option value="{{ $region->id }}">{{ $region->name }}</option>

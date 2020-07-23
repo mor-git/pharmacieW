@@ -42,55 +42,65 @@
                             <input type="hidden" value="{{csrf_token()}}" name="_token" id="token" />
                             
                             <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="input-select">Région</label>
+                                &nbsp;&nbsp;
+                                <div class="col-12 col-md-7">
+                                <select name="region" id="region" class="form-control col-12 col-md-8" id="input-select">
+                                    <option>Région</option>
+                                    
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="input-select">Commune</label>
+                                &nbsp;&nbsp;
+                                <div class="col-12 col-md-7">
+                                <select name="commune" id="commune" class="form-control col-12 col-md-8" id="input-select">
+                                    <option>Commune</option>
+                                    
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Nom Pharmacie</label>
-                                <div class="col-12 col-sm-8 col-lg-6">
+                                <div class="col-12 col-md-5">
                                     <input required="" name="name" type="text" min="6" max="100" placeholder="Nom du Pharmacie." class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Phone</label>
-                                <div class="col-12 col-sm-8 col-lg-6">
+                                <div class="col-12 col-md-5">
                                     <input type="text" name="phone" required="" data-parsley-minlength="6" placeholder="Téléphone." class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Adresse</label>
-                                <div class="col-12 col-sm-8 col-lg-6">
+                                <div class="col-12 col-md-5">
                                     <input type="text" name="address" required="" data-parsley-maxlength="6" placeholder="Adresse du Pharmacie." class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Description</label>
+                                <div class="col-12 col-md-5">
+                                    <textarea name="description" placeholder="Lieu exact du Pharmacie." class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label text-sm-right">Description</label>
                                 <div class="col-12 col-sm-8 col-lg-6">
                                     <input type="text" name="description" required="" data-parsley-length="[5,10]" placeholder="Lieu exact du Pharmacie." class="form-control">
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="input-select">Région</label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <select name="region" id="region" class="form-control col-12 col-sm-8 col-lg-6" id="input-select">
-                                    <option>Région</option>
-                                    
-                                </select>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-12 col-sm-3 col-form-label text-sm-right" for="input-select">Commune</label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <select name="commune" id="commune" class="form-control col-12 col-sm-8 col-lg-6" id="input-select">
-                                    <option>Commune</option>
-                                    
-                                </select>
-                            </div>
+                            </div> -->
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Adresse Complète</label>
-                                <div class="col-12 col-sm-8 col-lg-6">
+                                <div class="col-12 col-md-5">
                                     <input  type="text" name="adresse" id="adresse" required="" placeholder="Adresse Complète." class="form-control">
                                 </div>
                             </div>
                             <input id="lat" type="hidden" placeholder="Latitude" name="lat" readonly>
                             <input id="lng" type="hidden" placeholder="Longitude" name="lng" readonly>
-                            <div class="form-group row text-right">
-                                <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                            <div class="form-group row text-center">
+                                <div class="col col-md-10 offset-sm-1 offset-lg-0">
                                     <button type="submit" class="btn btn-space btn-success">Valider</button>
                                     <button class="btn btn-space btn-secondary">Annuler</button>
                                 </div>
@@ -130,7 +140,6 @@
 @endsection  
 @section('script') 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
 <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJby-hPhgoq4hIhiwKiHYvYmEUn74qnBw&callback=initMap" async defer></script>
 <!-- <script src="/template/lib/gmaps/gmaps.min.js"></script> -->
 
@@ -176,7 +185,7 @@ function initMap() {
      map = new google.maps.Map(document.getElementById('map'), {
       center: myLatLng,
       zoom: 8
-    });
+    }); 
   
     var marker = new google.maps.Marker({
           position: myLatLng,

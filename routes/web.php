@@ -81,7 +81,7 @@ Route::get('/pharmacies',[
     'as'   => 'pharmacies',
     'uses' => 'PharmacieController@showPharmacie'
 ]);
-Route::get('/changeStatus/{id}',[
+Route::get('/changeStatus',[
     'as'   => 'changeStatus',
     'uses' => 'PharmacieController@changeStatus'
 ]);
@@ -131,7 +131,7 @@ Route::post('/updateProfil/{id}',[
 /**----------------------------Route Users --------------------------- */
 Route::get('/users',[
     'as'   => 'users',
-    'uses' => 'UserController@indexUser'
+    'uses' => 'UserController@showUser'
 ]);
 Route::get('/addUser',[
     'as'   => 'addUser',
