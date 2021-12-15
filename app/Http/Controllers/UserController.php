@@ -30,7 +30,8 @@ class UserController extends Controller
     {
         $pharmacies = Pharmacie::all();
         $profils    = Profil::all();
-        return view('auth/register', ['pharmacies' => $pharmacies, 'profils' => $profils ]);
+        // return view('auth/register', ['pharmacies' => $pharmacies, 'profils' => $profils ]);
+        return view('users/addUser', ['pharmacies' => $pharmacies, 'profils' => $profils ]);
     }
 
     /**
@@ -42,20 +43,33 @@ class UserController extends Controller
     public function storeUser(Request $request)
     {
         $params = $request->except(['_token']);
-
         $user = new User();
-        $user->name = $params['name'];
-        $user->email = $params['email'];
-        $user->password = Hash::make($params['password']);
-        if($params['profil'] == 1){
 
-            $user->pharmacie_id = null;
-            $user->profil_id = $params['profil'];
+        $pwd = $params['password'];
+        $pwdConfirm = $params['passwordConfirmation'];
+        if($pwd === $pwdConfirm)
+        {
+            
+            $user->name = $params['name'];
+            $user->email = $params['email'];
+            $user->password = Hash::make($params['password']);
+            if($params['profil'] == 1){
 
+                $user->pharmacie_id = null;
+                $user->profil_id = $params['profil'];
+
+            }else{
+
+                $user->pharmacie_id = $params['pharmacie'];
+                $user->profil_id = $params['profil'];
+            }
         }else{
-
-            $user->pharmacie_id = $params['pharmacie'];
-            $user->profil_id = $params['profil'];
+            ?>
+            <script>
+                 alert("Les mots de passe ne sont pas conforme!!!!")
+                 window.location.href='addUser';
+            </script>
+            <?php
         }
         //dd($user);
         $user->save();
@@ -69,7 +83,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showUser()
+    public function showUser() 
     {
         $users = User::all();
         return view('users.showUser', ['users' => $users]);

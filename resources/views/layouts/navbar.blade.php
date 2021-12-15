@@ -4,9 +4,9 @@
         <!-- ============================================================== -->
         <!-- navbar -->
         <!-- ============================================================== -->
-        <div class="dashboard-header">
+        <div class="dashboard-header"> 
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a  href="#"><img src="assets/images/ph1.png" alt="" style="height: 50px; weight: 50px;"><span style="color: green; padding-top: 80%;">Pharmacie</span></a>
+                <a  href="#"><img src="{{ asset('assets/images/ph1.png')}}" alt="" style="height: 50px; weight: 50px;"><span style="color: green; padding-top: 80%;">Pharmacie</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -18,7 +18,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('assets/images/avatar-1.jpg')}}" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info" style="background-color: green;">
                                     <h5 class="mb-0 text-white nav-user-name">{{ Auth::user()->name }}</h5>
@@ -73,6 +73,13 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ url('/pharmacies')}}">Liste Pharmacie</a>
                                         </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url('/addPub')}}">Add Pub</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url('/pubs')}}">Liste Pub</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -122,14 +129,14 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a  href="index.html"><img src="assets/images/ph1.png" alt="" style="height: 50px; weight: 50px;"><span style="color: green; padding-top: 80%;">Pharmacie</span></a>
+                <a  href="index.html"><img src="{{ asset('assets/images/ph1.png')}}" alt="" style="height: 50px; weight: 50px;"><span style="color: green; padding-top: 80%;">Pharmacie</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('assets/images/avatar-1.jpg')}}" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info" style="background-color: green;">
                                     <h5 class="mb-0 text-white nav-user-name">{{ Auth::user()->name }}</h5>

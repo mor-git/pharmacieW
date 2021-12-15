@@ -64,10 +64,10 @@
                                         <td>{{ $pharmacie->status }}</td>
                                         <td>
                                             <a href="" >
-                                                <i class='fas fa-edit' style='font-size:20px;color:blue;'></i>
+                                                <i class='far fa-edit' style='font-size:20px;color:blue;'></i>
                                             </a>&nbsp;
                                             <a href="" >
-                                                <i class='fas fa-trash-alt' style='font-size:20px;color:red'></i>
+                                                <i class='far fa-trash-alt' style='font-size:20px;color:red'></i>
                                             </a>&nbsp;&nbsp;
                                             <a href="" >
                                                 <i class='fas fa-info' style='font-size:20px;color:green'></i>
@@ -92,9 +92,6 @@
 <!-- ============================================================== -->
 <!-- end wrapper  -->
 <!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- end main wrapper  -->
-<!-- ============================================================== -->
+
 @endsection
     

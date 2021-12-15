@@ -154,6 +154,13 @@
 
 /* 0.1. Body / Typography
    ========================================================================== */
+.taille{
+    height: 170px;
+    width: 150px;
+}
+.elem{
+    text-align: center;
+}
 
 body {
     font-family: 'Circular Std Book';

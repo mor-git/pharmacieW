@@ -10,4 +10,13 @@ class Region extends Model
     {
         return $this->hasMany(Commune::class);
     }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
 }

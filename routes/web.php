@@ -72,6 +72,32 @@ Route::get('/destroyCommune/{id}',[
     'uses' => 'CommuneController@destroyCommune'
 ]);
 /**---------------------------- Fin Route Commune --------------------------- */
+/**---------------------------- Route Pub --------------------------- */
+Route::get('/pubs',[
+    'as'   => 'pubs',
+    'uses' => 'PubController@showPub'
+]);
+Route::get('/addPub',[
+    'as'   => 'addPub',
+    'uses' => 'PubController@createPub'
+]);
+Route::post('/storePub',[
+    'as'   => 'storePub',
+    'uses' => 'PubController@storePub'
+]);
+Route::get('/editPub/{id}',[
+    'as'   => 'editPub',
+    'uses' => 'PubController@editPub'
+]);
+Route::post('/updatePub/{id}',[
+    'as'   => 'updatePub',
+    'uses' => 'PubController@updatePub'
+]);
+Route::get('/destroyPub/{id}',[
+    'as'   => 'destroyPub',
+    'uses' => 'PubController@destroyPub'
+]);
+/**---------------------------- Fin Route Pub --------------------------- */
 /**----------------------------Route Pharmacie --------------------------- */
 Route::get('/accueil',[
     'as'   => 'accueil',

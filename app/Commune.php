@@ -16,4 +16,13 @@ class Commune extends Model
     {
         return $this->hasMany('App\Pharmacie');
     }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'region_id',
+    ];
 }

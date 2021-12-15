@@ -15,4 +15,14 @@ class Pharmacie extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'phone', 'latitude',
+        'longitude', 'adresse', 'description','commune_id',
+    ];
 }

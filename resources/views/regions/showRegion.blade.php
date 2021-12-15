@@ -55,10 +55,10 @@
                                         <td>{{ $region->name }}</td>
                                         <td>
                                             <a href="" >
-                                                <i class='fas fa-edit' style='font-size:20px;color:blue;'></i>
+                                                <i class='fa fa-edit' style='font-size:20px;'></i>
                                             </a>&nbsp;
                                             <a href="" >
-                                                <i class='fas fa-trash-alt' style='font-size:20px;color:red'></i>
+                                                <i class='fa fa-trash-alt' style='font-size:20px;color:red'></i>
                                             </a>
                                         </td>
                                     </tr>

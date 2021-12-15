@@ -85,12 +85,6 @@
                                     <textarea name="description" placeholder="Lieu exact du Pharmacie." class="form-control"></textarea>
                                 </div>
                             </div>
-                            <!-- <div class="form-group row">
-                                <label class="col-12 col-sm-3 col-form-label text-sm-right">Description</label>
-                                <div class="col-12 col-sm-8 col-lg-6">
-                                    <input type="text" name="description" required="" data-parsley-length="[5,10]" placeholder="Lieu exact du Pharmacie." class="form-control">
-                                </div>
-                            </div> -->
                             <div class="form-group row">
                                 <label class="col-12 col-sm-3 col-form-label text-sm-right">Adresse Complète</label>
                                 <div class="col-12 col-md-5">
