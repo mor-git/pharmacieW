@@ -62,7 +62,7 @@
                                 <div class="form-group row text-center">
                                     <div class="col col-md-10 offset-sm-1 offset-lg-0">
                                         <button type="submit" class="btn btn-space btn-success">Valider</button>
-                                        <button class="btn btn-space btn-secondary">Annuler</button>
+                                        <button type="reset"  class="btn btn-space btn-secondary">Annuler</button>
                                     </div>
                                 </div>
                             </form>

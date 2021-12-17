@@ -74,6 +74,14 @@
                                             <a class="nav-link" href="{{ url('/pharmacies')}}">Liste Pharmacie</a>
                                         </li>
                                         
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fab fa-fw fa-wpforms"></i>Publicitè</a>
+                                <div id="submenu-6" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ url('/addPub')}}">Add Pub</a>
                                         </li>
@@ -83,6 +91,8 @@
                                     </ul>
                                 </div>
                             </li>
+
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Paramétres</a>
                                 <div id="submenu-5" class="collapse submenu" style="">

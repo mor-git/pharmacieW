@@ -151,7 +151,7 @@
                                                     <input id="pharmaci_id" type="hidden" value="{{ Auth::user()->pharmacie_id }}"/>
                                                     <input id="stat" type="hidden" value="{{ Auth::user()->pharmacies->status }}"/>
                                                     <!-- <div class="user-avatar-name" style="margin-left : 19%;"> -->
-                                                    <h2>Pharmacie :&nbsp;&nbsp;{{ Auth::user()->pharmacies->name }}</h2>
+                                                    <h2><!--Pharmacie :&nbsp;&nbsp;-->{{ Auth::user()->pharmacies->name }}</h2>
                                                     <p style="margin-left : 12%;"><span class="fa fa-map-marker"> </span>&nbsp;&nbsp;{{ Auth::user()->pharmacies->adresse }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                         <span class="fa fa-phone"> </span>&nbsp;&nbsp;{{ Auth::user()->pharmacies->phone }}
                                                     </p>
@@ -172,23 +172,23 @@
                                             <div style="margin-top: 40px;">
                                                 <button id="btn" style="border-radius: 5px;color: white;" class="btn btn-success">Changer de Statut.</button>
                                             </div>
-                                            @endif
+                                            @endif 
                                         </div>
                                         
                                     <!-- </div> -->
                                 </div><br>
                                 <div id="status">
                                 @if(Auth::user()->pharmacies->status === 1)
-                                <div class="border-top user-social-box" style="background-color: green;">
-                                    <div class="user-social-media d-xl-inline-block" style="padding-left : 45%;">
+                                <div class="border-top user-social-box" style="background-color: green; text-align:center">
+                                    <div class="user-social-media d-xl-inline-block">
                                         <span>
                                             <h3 class="mb-1" style="color: white;">Garde Activée</h3>
                                         </span>
                                     </div>
                                 </div>
                                 @else
-                                <div class="border-top user-social-box" style="background-color : red;">
-                                    <div class="user-social-media d-xl-inline-block" style="margin-left : 38%;">
+                                <div class="border-top user-social-box" style="background-color : red; text-align:center">
+                                    <div class="user-social-media d-xl-inline-block">
                                         <span>
                                             <h3 class="mb-1" style="color: white;">Garde Terminée</h3>
                                         </span>

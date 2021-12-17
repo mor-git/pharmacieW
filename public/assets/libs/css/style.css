@@ -161,7 +161,9 @@
 .elem{
     text-align: center;
 }
-
+.status{
+    width: 100%;
+}
 body {
     font-family: 'Circular Std Book';
     font-style: normal;
@@ -6887,7 +6889,7 @@ Media Query
     .dashboard-content {
     padding: 20px 20px 60px 20px;
 }
-    .nav-left-sidebar .navbar a {
+    .nav-left-sidebar .navbar a { 
         color: #fff;
     }
     .nav-left-sidebar .navbar-toggler {
