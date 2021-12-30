@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 });**/
 /**---------------------------------Api Route Région ---------------------------- */
 Route::get('/apiRegions',[
-        'as'         => 'regionsApi',
+        'as'         => 'regionsApi', 
         'uses'       => 'ApiRegionController@showRegion',
         'middleware' => 'cors'
 ]);
@@ -38,3 +38,10 @@ Route::post('/pharmaciesApi',[
     'middleware' => 'cors'
 ]);
 /**---------------------------------Fin Api Route Pharmacie ---------------------------- */
+/**---------------------------------Api Route Pub ---------------------------- */
+Route::get('/pubsApi',[
+    'as'         => 'pubsApi',
+    'uses'       => 'ApiPubController@showPub',
+    'middleware' => 'cors'
+]);
+/**---------------------------------Fin Api Route Pub ---------------------------- */

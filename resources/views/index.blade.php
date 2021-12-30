@@ -130,9 +130,7 @@
                 </div>
                 <!-- ============================================================== -->
                 <!-- end pageheader  -->
-                <!-- ============================================================== -->
-                
-
+                <!-- ============================================================== -->               
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card influencer-profile-data">
@@ -161,15 +159,12 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4;" style="margin-left : 19%;">
-                                            <!-- <div style="margin-top: 40px;">
-                                                <button id="btn" style="color: white;" class="btn btn">Changer de Statut.</button>
-                                            </div> -->
                                             @if(Auth::user()->pharmacies->status === 1)
-                                            <div style="margin-top: 40px;">
+                                            <div style="margin-top: 29%;">
                                                 <button id="btn" style="border-radius: 5px;color: white;" class="btn btn-danger">Changer de Statut.</button>
                                             </div>
                                             @else
-                                            <div style="margin-top: 40px;">
+                                            <div style="margin-top: 29%;">
                                                 <button id="btn" style="border-radius: 5px;color: white;" class="btn btn-success">Changer de Statut.</button>
                                             </div>
                                             @endif 

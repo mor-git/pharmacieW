@@ -39,8 +39,8 @@ class PharmacieController extends Controller
         $status = $pharmacie->status;
         $html="";
         if($status == 1){
-            $html=$html."<div class='border-top user-social-box' style='background-color: green;'>
-            <div class='user-social-media d-xl-inline-block' style='margin-left: 38%;'>
+            $html=$html."<div class='border-top user-social-box' style='background-color: green;text-align:center'>
+            <div class='user-social-media d-xl-inline-block'>
                 <span>
                     <h3 class='mb-1' style='color: white;'>Garde Activée</h3>
                 </span>
@@ -48,8 +48,8 @@ class PharmacieController extends Controller
         </div>";
        
         }else{
-            $html=$html."<div class='border-top user-social-box' style='background-color : red;'>
-            <div class='user-social-media d-xl-inline-block' style='margin-left: 38%;'>
+            $html=$html."<div class='border-top user-social-box' style='background-color : red;text-align:center'>
+            <div class='user-social-media d-xl-inline-block'>
                 <span>
                     <h3 class='mb-1' style='color: white;'>Garde Terminée</h3>
                 </span>
