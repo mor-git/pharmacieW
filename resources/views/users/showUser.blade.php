@@ -31,7 +31,7 @@
             <!-- ============================================================== -->
 <!-- ########## START: MAIN PANEL ########## -->
 <br>
-<div style="text-align : right; margin-right : 12px;"><a href="{{ url('/addUser')}}" class="btn btn-outline-primary">Nouvelle Commune</a></div><br>
+<div style="text-align : right; margin-right : 12px;"><a href="{{ url('/addUser')}}" class="btn btn-outline-success">Nouveau Utilisateur</a></div><br>
 <div class="br-mainpanel">
      
       <div class="br-pagebody">
@@ -55,16 +55,20 @@
               <?php $i = 1; ?>   
               @foreach($users as $user)
                 <tr>
-                  <td><?php echo $i; ?></td>
+                  <td>{{ $i }}</td>
                   <td>{{ $user->name }}</td>
-                  <td>{{ $user->pharmacie_id }}</td>
+                  @if($user->pharmacies == null )
+                    <td> </td>
+                  @else
+                    <td>{{ $user->pharmacies->name }}</td>
+                  @endif
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->profils->libelle }}</td>
                   <td>
-                     <a href="{{ url('/editUser')}}"><i class='far fa-edit' style='font-size:20px;'></i></a>
+                     <a href="{{ url('/editUser',$user->id )}}"><i class='far fa-edit' style='font-size:15px;color:green'></i></a>
                      &nbsp;&nbsp;
-                     <a href="{{ url('/editUser')}}"><i class='far fa-trash-alt' style='font-size:20px;color:red'></i></a>
-                  </td>
+                     <a href="{{ url('/suppUser', $user->id )}}"><i class='far fa-trash-alt' style='font-size:15px;color:red'></i></a>
+                  </td> 
                 </tr>
                 <?php $i++; ?>
               @endforeach

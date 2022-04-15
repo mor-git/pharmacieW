@@ -53,27 +53,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i=1; ?>
                                 @foreach($pharmacies as $pharmacie)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $i }}</td>
                                         <td>{{ $pharmacie->name }}</td>
                                         <td>{{ $pharmacie->phone }}</td>
                                         <td>{{ $pharmacie->adresse }}</td>
                                         <td>{{ $pharmacie->description }}</td>
                                         <td>{{ $pharmacie->communes->name }}</td>
-                                        <td>{{ $pharmacie->status }}</td>
+                                        @if($pharmacie->status == 0)
+                                            <td style='font-size:14px;color:red;'>Fermée</td>
+                                        @else
+                                            <td style='font-size:14px;color:green;'>Ouverte</td>
+                                        @endif
                                         <td>
-                                            <a href="" >
-                                                <i class='far fa-edit' style='font-size:20px;color:blue;'></i>
+                                            <a href="{{ url('/editPharmacie/'.$pharmacie->id ) }}" >
+                                                <i class='far fa-edit' style='font-size:15px;color:green;'></i>
                                             </a>&nbsp;
                                             <a href="" >
-                                                <i class='far fa-trash-alt' style='font-size:20px;color:red'></i>
+                                                <i class='fas fa-info' style='font-size:15px;color:blue'></i>
                                             </a>&nbsp;&nbsp;
-                                            <a href="" >
-                                                <i class='fas fa-info' style='font-size:20px;color:green'></i>
+                                            <a href="{{ url('/suppPharmacie/'.$pharmacie->id ) }}" >
+                                                <i class='far fa-trash-alt' style='font-size:15px;color:red'></i>
                                             </a>
                                         </td>
                                     </tr>
+                                    <?php $i=$i+1; ?>
                                 @endforeach
                                     <tr>
                                         <td colspan="12"></td>

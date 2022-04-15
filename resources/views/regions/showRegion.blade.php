@@ -54,11 +54,11 @@
                                         <td>{{ $i }}</td>
                                         <td>{{ $region->name }}</td>
                                         <td>
-                                            <a href="" >
-                                                <i class='fa fa-edit' style='font-size:20px;'></i>
-                                            </a>&nbsp;
-                                            <a href="" >
-                                                <i class='fa fa-trash-alt' style='font-size:20px;color:red'></i>
+                                            <a href="{{ url('/editRegion',$region->id) }}" >
+                                                <i class='fa fa-edit' style='font-size:15px;color:green'></i>
+                                            </a>&nbsp;&nbsp;&nbsp;
+                                            <a href="{{ url('/suppRegion',$region->id) }}" >
+                                                <i class='fa fa-trash-alt' style='font-size:15px;color:red'></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -70,6 +70,10 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    {{-- Pagination --}}
+                    <div class="d-flex justify-content-center">
+                        {!! $regions->links() !!}
                     </div>
                 </div>
             </div>

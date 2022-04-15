@@ -54,11 +54,11 @@
                                         <td>{{ $i }}</td>
                                         <td>{{ $profil->libelle }}</td>
                                         <td>
-                                            <a href="" >
-                                                <i class='fas fa-edit' style='font-size:20px;color:blue;'></i>
+                                            <a href="{{ url('/editProfil',$profil->id ) }}" >
+                                                <i class='fas fa-edit' style='font-size:15px;color:green;'></i>
                                             </a>&nbsp;
-                                            <a href="" >
-                                                <i class='fas fa-trash-alt' style='font-size:20px;color:red'></i>
+                                            <a href="{{ url('/suppProfil',$profil->id ) }}" >
+                                                <i class='fas fa-trash-alt' style='font-size:15px;color:red'></i>
                                             </a>
                                         </td>
                                     </tr>

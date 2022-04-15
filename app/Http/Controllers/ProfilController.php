@@ -86,7 +86,7 @@ class ProfilController extends Controller
         $profil->libelle = $libelle;
         $profil->update();
 
-        return redirect('/addProfil')->with('success', 'Data Updated');
+        return redirect('/profils')->with('success', 'Data Updated');
 
     }
 
@@ -98,6 +98,10 @@ class ProfilController extends Controller
      */
     public function destroyProfil($id)
     {
-        //
+        $profil = Profil::find($id);
+        // dd($profil);
+        $profil->delete();
+
+        return redirect('/profils');
     }
 }

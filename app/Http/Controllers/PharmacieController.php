@@ -15,7 +15,7 @@ class PharmacieController extends Controller
      */
     public function index()
     {
-        $pharmacies = Pharmacie::latest()->get();
+        $pharmacies = Pharmacie::paginate(10);
         return view('index', ['pharmacies' => $pharmacies ]);
     }
 
@@ -160,6 +160,9 @@ class PharmacieController extends Controller
      */
     public function destroyPharmacie($id)
     {
-        //
+        $pharmacie = Pharmacie::find($id);
+        $pharmacie->delete();
+
+        return redirect('/pharmacies');
     }
 }

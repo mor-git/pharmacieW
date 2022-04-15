@@ -43,24 +43,31 @@
                             <div class="container">
                                 <div class="row">
                                     @foreach($pubs as $pub)
-                                    <div class="col-3 elem">
+                                    <div class="col-2 elem">
                                         <img class="taille" src="{{ asset('assets/images/'.$pub->chemin) }}"/>
-                                        <p>{{ $pub->libele }} , {{ $pub->datePub }}</p>
-                                        <p>
+                                        {{ $pub->libele }} <br> 
+                                        {{ $pub->datePub }} <br> <br> 
+                                        
+                                        <div>
                                             <a href="{{ url('/editPub/'.$pub->id)}}" >
-                                                <i class='far fa-edit' style='font-size:20px;color:rgb(115, 194, 251);'></i>
+                                                <i class='far fa-edit' style='font-size:15px;color:rgb(115, 194, 251);'></i>
                                             </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <a href="" >
-                                                <i class='fas fa-info' style='font-size:20px;color:rgb(0, 255, 0)'></i>
+                                                <i class='fas fa-info' style='font-size:15px;color:rgb(0, 255, 0)'></i>
                                             </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <a href="{{ url('/destroyPub/'.$pub->id)}}" >
-                                                <i class='far fa-trash-alt' style='font-size:20px;color:red'></i>
+                                                <i class='far fa-trash-alt' style='font-size:15px;color:red'></i>
                                             </a>
                                             
-                                        </p>
+                                        </div>
                                     </div>
                                     @endforeach
                                 </div>
+                            </div>
+                            <br><br>
+                            {{-- Pagination --}}
+                            <div class="d-flex justify-content-center">
+                                {!! $pubs->links() !!}
                             </div>
                         <!-- ============================Fin Liste================================== -->
                         </div>
@@ -76,4 +83,5 @@
 <!-- ============================================================== -->
 <!-- end wrapper  -->
 <!-- ============================================================== -->
+
 @endsection

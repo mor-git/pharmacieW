@@ -15,7 +15,7 @@ class CommuneController extends Controller
      */
     public function index()
     {
-        $communes = Commune::all();
+        $communes = Commune::paginate(10);
         return view('communes.showCommune', ['communes' => $communes]);
     }
 
@@ -70,8 +70,8 @@ class CommuneController extends Controller
     public function editCommune($id)
     {
         $commune = Commune::find($id);
-
-        return view('communes.updateCommune', ['commune' => $commune]);
+        $regions = Region::all();
+        return view('communes.updateCommune', ['commune' => $commune, 'regions' => $regions ]);
     }
 
     /**
@@ -89,9 +89,10 @@ class CommuneController extends Controller
         $commune = Commune::find($id);
         $commune->name      = $name;
         $commune->region_id = $region;
+        dd($commune);
         $commune->update();
 
-        return redirect('/addCommune');
+        return redirect('/communes');
     }
 
     /**
@@ -102,9 +103,10 @@ class CommuneController extends Controller
      */
     public function destroyCommune($id)
     {
-        $com = Commune::find($id);
-        $com->delete();
+        $commune = Commune::find($id);
+        dd($commune);
+        $commune->delete();
         
-        return redirect('/addCommune');
+        return redirect('/communes');
     }
 }

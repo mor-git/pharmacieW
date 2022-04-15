@@ -33,23 +33,27 @@ Route::post('/storeRegion',[
     'as'   => 'storeRegion',
     'uses' => 'RegionController@storeRegion'
 ]);
-Route::get('/editRegion',[
+Route::get('/editRegion/{id}',[
     'as'   => 'editRegion',
     'uses' => 'RegionController@editRegion'
 ]);
-Route::put('/updateRegion',[
+Route::put('/updateRegion/{id}',[
     'as'   => 'updateRegion',
     'uses' => 'RegionController@updateRegion'
+]);
+Route::get('/suppRegion/{id}',[
+    'as'   => 'suppRegion',
+    'uses' => 'RegionController@destroyRegion'
 ]);
 /**---------------------------- Fin Route Region --------------------------- */
 /**----------------------------Route Commune --------------------------- */
 // Route::get('/communes',[
 //     'as'   => 'communes',
-//     'uses' => 'CommuneController@index'
+//     'uses' => 'CommuneController@index' 
 // ]);
 Route::get('/communes',[
     'as'   => 'communes',
-    'uses' => 'CommuneController@showCommune'
+    'uses' => 'CommuneController@index'
 ]);
 Route::get('/addCommune',[
     'as'   => 'addCommune',
@@ -67,8 +71,8 @@ Route::post('/updateCommune/{id}',[
     'as'   => 'updateCommune',
     'uses' => 'CommuneController@updateCommune'
 ]);
-Route::get('/destroyCommune/{id}',[
-    'as'   => 'destroyCommune',
+Route::get('/suppCommune/{id}',[
+    'as'   => 'suppCommune',
     'uses' => 'CommuneController@destroyCommune'
 ]);
 /**---------------------------- Fin Route Commune --------------------------- */
@@ -121,11 +125,15 @@ Route::post('/storePharmacie',[
 ]);
 Route::get('/editPharmacie/{id}',[
     'as'   => 'editPharmacie',
-    'uses' => 'PharmacieController@editPharmacie'
+    'uses' => 'PharmacieController@editPharmacie' 
 ]);
 Route::post('/updatePharmacie/{id}',[
     'as'   => 'updatePharmacie',
     'uses' => 'PharmacieController@updatePharmacie'
+]);
+Route::get('/suppPharmacie/{id}',[
+    'as'   => 'suppPharmacie',
+    'uses' => 'PharmacieController@destroyPharmacie'
 ]);
 /**---------------------------- Fin Route Pharmacie --------------------------- */
 /**----------------------------Route Profil --------------------------- */
@@ -149,9 +157,13 @@ Route::get('/editProfil/{id}',[
     'as'   => 'editProfil',
     'uses' => 'ProfilController@editProfil'
 ]);
-Route::post('/updateProfil/{id}',[
-    'as'   => 'updateProfil',
+Route::post('/modifProfil/{id}',[
+    'as'   => 'modifProfil', 
     'uses' => 'ProfilController@updateProfil'
+]);
+Route::get('/suppProfil/{id}',[
+    'as'   => 'suppProfil',
+    'uses' => 'ProfilController@destroyProfil'
 ]);
 /**---------------------------- Fin Route Profil --------------------------- */
 /**----------------------------Route Users --------------------------- */
@@ -167,13 +179,17 @@ Route::post('/storeUser',[
     'as'   => 'storeUser',
     'uses' => 'UserController@storeUser'
 ]);
-Route::get('/editUser',[
+Route::get('/editUser/{id}',[
     'as'   => 'editUser',
     'uses' => 'UserController@editUser'
 ]);
-Route::put('/updateUser',[
+Route::put('/updateUser/{id}',[
     'as'   => 'updateUser',
     'uses' => 'UserController@updateUser'
+]);
+Route::get('/suppUser/{id}',[
+    'as'   => 'suppUser',
+    'uses' => 'UserController@destroyUser'
 ]);
 /**---------------------------- Fin Route Users --------------------------- */
 Auth::routes();

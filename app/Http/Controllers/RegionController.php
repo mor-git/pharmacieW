@@ -54,7 +54,7 @@ class RegionController extends Controller
      */
     public function showRegion()
     {
-        $regions = Region::latest()->get();
+        $regions = Region::paginate(5);
         return view('regions.showRegion', ['regions' => $regions]);
     }
 
@@ -96,6 +96,10 @@ class RegionController extends Controller
      */
     public function destroyRegion($id)
     {
-        //
+        $region = Region::find($id);
+        dd($region);
+        $region->delete();
+
+        return redirect('/regions');
     }
 }

@@ -98,7 +98,9 @@ class UserController extends Controller
     public function editUser($id)
     {
         $user = User::find($id);
-        return view('users.updateUser', ['user' => $user]);
+        $profils = Profil::all();
+        $pharmacies = Pharmacie::all();
+        return view('users.updateUser', ['user' => $user, 'pharmacies'=> $pharmacies, 'profils'=> $profils ]);
     }
 
     /**
@@ -140,6 +142,10 @@ class UserController extends Controller
      */
     public function destroyUser($id)
     {
-        //
+        $user = User::find($id);
+        dd($user);
+        $user->delete();
+
+        return redirect('/users');
     }
 }

@@ -33,7 +33,7 @@
             <!-- ============================================================== -->
             <!-- recent orders  -->
             <!-- ============================================================== -->
-            <div style="text-align : right; margin-right : 12px;"><a href="{{ url('/addCommune')}}" class="btn btn-outline-primary">Nouvelle Commune</a></div><br>
+            <div style="text-align : right; margin-right : 12px;"><a href="{{ url('/addCommune')}}" class="btn btn-outline-success">Nouvelle Commune</a></div><br>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card">
                     <h5 class="card-header">Recent Orders</h5>
@@ -49,26 +49,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php $i=1; ?>
                                 @foreach($communes as $commune)
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{ $i }}</td>
                                         <td>{{ $commune->name }}</td>
                                         <td>{{ $commune->regions->name }}</td>
                                         <td>
-                                            <a href="" >
-                                                <i class='fas fa-edit' style='font-size:20px;color:blue;'></i>
-                                            </a>&nbsp;
-                                            <a href="" >
-                                                <i class='fas fa-trash-alt' style='font-size:20px;color:red'></i>
+                                            <a href="{{ url('/editCommune',$commune->id ) }}" >
+                                                <i class='fas fa-edit' style='font-size:15px;color:green'></i>
+                                            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="{{ url('/suppCommune',$commune->id ) }}" >
+                                                <i class='fas fa-trash-alt' style='font-size:15px;color:red'></i>
                                             </a>
                                         </td>
                                     </tr>
+                                    <?php $i=$i+1; ?>
                                 @endforeach
                                     <tr>
                                         <td colspan="12"></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <br><br>
+                            {{-- Pagination --}}
+                            <div class="d-flex justify-content-center">
+                                {!! $communes->links() !!}
+                            </div>
                         </div>
                     </div>
                 </div>

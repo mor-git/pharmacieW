@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pub;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PubController extends Controller
 {
@@ -69,7 +70,8 @@ class PubController extends Controller
      */
     public function showPub(Pub $pub)
     {
-        $pub = Pub::latest()->where('statut', 1)->get();
+        // $pub = Pub::latest()->where('statut', 1)->get();
+        $pub = Pub::paginate(6);
         return view('pubs/showPub', ['pubs'=>$pub] );
     }
 
@@ -114,12 +116,10 @@ class PubController extends Controller
     public function destroyPub($id)
     {
         $pub = Pub::find($id);
-        $pub->statut = 0;
-        // dd($pub);
-        // if($pub->statut === 1){
-        //     $pub->statut = 0;
-        // }
-        $pub->update();
+        $file= $pub->chemin;
+        // dd($file);
+        unlink(public_path() . '/assets/images/'.$file);
+        $pub->delete();
         return redirect('/pubs');
     }
 }
